@@ -1,0 +1,22 @@
+{% extends 'application/base.html' %}
+
+{% block page_header %}
+	
+	<h1>ТОПЧИКИ</h1>
+{% endblock page_header%}
+
+
+{%block content %}
+	<ul>
+		{%for topic in topics5%}
+			<li><h1>
+				<a href="{% url 'апликейшн:топик' topic.id %}">{{ topic }}</a>
+			</h1></li>
+		{%empty%}
+			<li><h3>NO TOPICS HAVE BEEN ADDED YET.</h3></li>
+		{% endfor %}
+	</ul>
+
+	<h3><a href="{% url 'апликейшн:NEW_TOPIC'%}"> Add a new topic:</a></h3> <!-- ссылка на страницу для создания новой темы-->
+
+{% endblock content %}

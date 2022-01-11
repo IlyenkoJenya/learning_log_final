@@ -1,0 +1,21 @@
+{%extends 'application/base.html'%}
+{% load bootstrap4 %}
+
+{%block page_header%}
+<h3><a href="{% url 'апликейшн:топик' topic.id %}">{{ topic }}</a></h3>
+{% endblock page_header %}
+
+
+{% block content %}
+	<p>Add a new entry:</p>
+
+	<form action="{%url 'апликейшн:NEW_ENTRY' topic.id %}" method="post">
+		{% csrf_token%}
+		{% bootstrap_form form %}
+		{% buttons %}
+		<button name="submit" class="btn btn-primary"  >add entry</button>
+		{% endbuttons%}
+		</form>
+
+
+{% endblock content %}

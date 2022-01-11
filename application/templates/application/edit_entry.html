@@ -1,0 +1,17 @@
+{% extends "application/base.html"%} 
+
+{%block content%}
+
+<p><a href="{% url 'апликейшн:топик' topic.id%}">{{topic}}</a></p>
+
+<p>Edit entry:</p>
+
+<form action= "{% url 'апликейшн:EDIT_ENTRY' entry.id%}" method="post"> <!--определяется форма HTML. 
+Аргумент action сообщает серверу, куда передавать данные, отправленные формой; в данном случае данные возвращаются функции представления edit_entry(). 
+Аргумент method приказывает браузеру отправить данные в запросе типа POST.-->
+	{% csrf_token%}
+	{{form.as_p}}
+	<button name="submit">save changes</button> <!--создает кнопку-->
+ </form>	
+
+ {% endblock content%}
