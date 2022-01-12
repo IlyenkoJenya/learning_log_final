@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect #render-воспроизводить с англ, 
+from django.shortcuts import render,redirect,get_object_or_404 #render-воспроизводить с англ, 
 #HttpResponseRedirect-redirect=перенаправления пользователя к странице topics после отправки введенной темы
 from django.contrib.auth.decorators import login_required
 from .models import Topic,Entry
@@ -27,7 +27,7 @@ def topics(request):
 @login_required
 def topic(request,topic_id):
 	#ВЫводит одну теmу и все ее записи
-	topic=Topic.objects.get(id=topic_id)
+	topic=get_object_or_404(Topic,id=topic_id)
 	#проверка того что тебя принадлежит текущему пользователю
 	check_topic_owner(request,topic)
 	entries=topic.entry_set.order_by('id')
